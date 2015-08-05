@@ -1,0 +1,14 @@
+# THIS FILE IS CREATED BY CHEF
+
+topology 'standalone'
+license['nodes'] = 5
+api_fqdn '<%= @chefpublicdns %>'
+
+oc_id['applications'] = {
+  'analytics' => {
+    'redirect_uri' => 'https://<%= @analyticsfqdn %>/'
+  }
+}
+
+rabbitmq['vip'] = '<%= @chefserverfqdn %>'
+rabbitmq['node_ip_address'] = '0.0.0.0'

@@ -40,7 +40,7 @@ with_driver "aws::#{region}" do
 
   # Create Chef Server
   machine "#{name}-ChefServer" do
-    recipe 'chefservers::chefsrvr'
+    recipe 'chefandanalytics::chefsrvr'
     action :converge
     tag "#{name}-ChefServer"
   end

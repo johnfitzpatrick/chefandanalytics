@@ -6,9 +6,7 @@
 
 # Need to run this due to error '/etc/opscode/pivotal.rb does not exist'
 
-# execute 'chef-server-ctl reconfigure' do
-#   action :run
-# end
+
 
 firstname = node["chefservers"]["chefuserfirstname"]
 lastname = node["chefservers"]["chefuserlastname"]
@@ -20,7 +18,5 @@ orgfullname = node["chefservers"]["defaultorgfullname"]
 
 setupcommand = "chef-server-ctl marketplace-setup -f #{firstname} -l #{lastname} -u #{username} -p #{password} -e #{email} -o #{org} -y"
 
+#commented out as a Troubleshooting time saver
 execute setupcommand
-
-
-

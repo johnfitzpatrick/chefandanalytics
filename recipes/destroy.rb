@@ -10,7 +10,12 @@ with_driver "aws::#{region}"
 #  action :destroy
 #end
 
+
   machine "#{name}-ChefServer" do
+    action :destroy
+  end
+
+  machine "#{name}-AnalyticsServer" do
     action :destroy
   end
 
@@ -19,9 +24,6 @@ with_driver "aws::#{region}"
     action :run
   end
 
-	node["chefservers"]["ports"].each do |portname, port|
-	thissecgrp = "#{name}-#{portname}-secgroup"
-    aws_security_group thissecgrp do
-    	action :destroy
-    end
-end
+  aws_security_group "#{name}-secgroup" do
+      action :destroy
+  end
