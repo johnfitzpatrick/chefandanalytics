@@ -5,13 +5,7 @@ execute 'chef-server-ctl-stop' do
   action :run
 end
 
-node.default["chefservers"]["chefpublicip"] = node['ec2']['public_ipv4']
-
-# chefserverfqdn = search(:node, 'name:ChefServer').first["fqdn"]
-# chefpublicdns  = search(:node, 'name:ChefServer').first["ipaddress"]
-# chefpublicdns  = search(:node, 'name:ChefServer').first["ec2"]["public_hostname"]
 analyticsfqdn  = search(:node, 'name:AnalyticsServer').first["fqdn"]
-# analyticsfqdn  = node["fqdn"]
 chefserverfqdn = node["fqdn"]
 chefpublicdns  = node["ec2"]["public_hostname"]
 
